@@ -167,6 +167,13 @@ def main():
     txt_len, unique_words, number_of_characters = get_txt_words(filepath)
     logging.info(f" Text has {number_of_characters} caracters, {txt_len} words, {unique_words} different words")
 
+    ## Remove existing splits
+    cmd_del_splits=f"rm -rf /tmp/asenet/splits/*"
+    return_code_del_splits = cmd_bash(cmd_del_splits)
+    if return_code_del_splits == 0:
+        logging.info(f" Removed splits from local folder")
+
+
     ## 1 split per up machine
     with open('/tmp/asenet/machines.txt') as f:
         machines_list = f.read().splitlines()
@@ -175,7 +182,7 @@ def main():
     logging.debug('machines up: '+str(machines_list))
 
     # Making as much chunk as machines (adding 5% more due to line breaks not counted by len)
-    char_chunk = ceil(number_of_characters / len(machines_list)*1.05)
+    char_chunk = ceil(number_of_characters / len(machines_list)*1.10)
 
     ## Create Splits Files:
     splits = create_splits(filepath, char_chunk, splits_folder)

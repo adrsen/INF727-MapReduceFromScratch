@@ -4,7 +4,7 @@ import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-def cmd_bash(cmd,result=False,wait=False, timeout=30):
+def cmd_bash(cmd,result=False,wait=False, timeout=60):
     process_machine = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
 
     if wait:
