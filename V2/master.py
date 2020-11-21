@@ -67,7 +67,6 @@ def create_splits(filename, char_chunk, folder):
 
     return splits_list
 
-
 def launch_map(machine, file):
     cmd_map=f"ssh asenet@{machine} python3 /tmp/asenet/slave.py 0 {file}"
     return_code_slave = cmd_bash(cmd_map)
@@ -100,20 +99,6 @@ def launch_reduce(machine):
     return return_code_slave, machine, return_result
 
 def show_results(reduce_results):
-    # word_count_final=[]
-    # for return_data in reduce_results[1]:
-    #     result = ast.literal_eval(return_data[2])
-    #     word_count_final.append(result)
-    #
-    # flat_list = [item for sublist in word_count_final for item in sublist]
-    # dict_agg={}
-    # for i in flat_list:
-    #     for k, v in i.items():
-    #         if dict_agg.get(k,0) != 0:
-    #             dict_agg[k] += v
-    #         else:
-    #             dict_agg[k] = v
-
     dict_agg={}
     for return_data in reduce_results[1]:
         result = ast.literal_eval(return_data[2])
