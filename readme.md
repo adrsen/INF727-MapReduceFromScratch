@@ -7,3 +7,6 @@ https://remisharrock.fr/courses/simple-hadoop-mapreduce-from-scratch
 
 ## Version 1
 V1 fonctionnant avec 3 machines et effectuant un envoi scp pour chaque mot hashe sur chaque machine
+
+## Version 2
+V2 ameliore la phase de shuffle
